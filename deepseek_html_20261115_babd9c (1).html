@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PASSION CUSTOMS</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<button class="mobile-toggle" id="mobileToggle">☰</button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">💜</div><div><h1>PASSION</h1><p>CUSTOMS</p></div></div>
+  <nav class="nav-menu">
+    <button class="nav-btn active" data-tab="home"><span class="ico">🏠</span> Главная</button>
+    <button class="nav-btn" data-tab="rules"><span class="ico">📜</span> Правила</button>
+    <button class="nav-btn" data-tab="games"><span class="ico">🎮</span> Игры</button>
+    <button class="nav-btn" data-tab="hoststream"><span class="ico">📺</span> Стрим хоста</button>
+    <button class="nav-btn" data-tab="code"><span class="ico">🎨</span> CR Code User</button>
+    <button class="nav-btn" data-tab="prizes"><span class="ico">💸</span> Призы</button>
+    <button class="nav-btn" data-tab="wins"><span class="ico">🥇</span> Победы</button>
+    <button class="nav-btn" data-tab="playerstreams"><span class="ico">🎥</span> Стримы игроков</button>
+    <button class="nav-btn" data-tab="support"><span class="ico">💬</span> Поддержка</button>
+    <button class="nav-btn admin-only" data-tab="admin" id="adminNavBtn"><span class="ico">👑</span> Админ-панель <span class="nav-badge" id="adminBadge">0</span></button>
+  </nav>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="profile-chip" onclick="openProfileModal()">
+      <div class="profile-avatar"><span id="topAvatarLetter">P</span><span class="admin-star" id="adminStar">👑</span></div>
+      <div class="profile-info">
+        <div class="profile-name" id="topProfileName">PlayerFN</div>
+        <div class="profile-balance-text" id="chipBalance">1 500 ₽</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="panel active" id="panel-home">
+    <div class="hero">
+      <div class="hero-content">
+        <h2>Кастомки каждый день.<br>Хорошие призы.<br>Хорошее настроение.</h2>
+        <p>Проводим ежедневные призовые матчи в Fortnite: Королевская битва и Перезарядка.</p>
+        <a href="https://discord.gg/2Dnm6KuC7" target="_blank" rel="noopener noreferrer" class="btn-primary">Играть</a>
+      </div>
+    </div>
+    <div class="section-title">Расписание на сегодня</div>
+    <div class="schedule" id="scheduleList"></div>
+    <div class="online-section">
+      <div class="online-header">Онлайн сейчас <span class="online-count" id="onlineCount">0</span></div>
+      <div class="bots-grid" id="botsGrid"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-rules">
+    <div class="page-head"><div class="page-title">📜 Правила кастомок</div><p class="page-sub">Перед тем как начать свои игры, настоятельно рекомендуем ознакомиться с правилами.</p></div>
+    <div class="rules-tabs">
+      <button class="rules-tab active" data-rule="howto">🎯 Как играть</button>
+      <button class="rules-tab" data-rule="kb">🌴 Правила КБ</button>
+      <button class="rules-tab" data-rule="reload">⚡ Правила Перезарядки</button>
+    </div>
+    <div class="rule-content active" id="rule-howto">
+      <div class="howto">
+        <div class="warn">⚠️ <b>Помните:</b> любое нарушение правил приведет от 3 дней до 60 дней бана.</div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-title">Шаг 1</div><div class="step-desc">Чтобы зарегистрироваться в игре, вам необходимо нажать играть во вкладке <b>Игры</b>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-title">Шаг 2</div><div class="step-desc">После этого вас перебросит в Discord, где во вкладке с матчем вам надо будет нажать на лодошку от <b>Yunite</b>.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-title">Шаг 3</div><div class="step-desc">После он отправит вам запрос на добавление в друзья. Добавьте его в друзья, назначьте лидером группы и дождитесь, пока он покинет группу. Как только он это сделает, просто нажмите <b>«Готово»</b>.</div></div></div>
+        <div class="step" style="border-top:1px solid var(--line-soft);margin-top:10px;padding-top:20px;"><div class="step-num" style="background:var(--red-soft);color:var(--red);">!</div><div><div class="step-title">Вас убили?</div><div class="step-desc">Не стоит быть токсичным или оскорблять кого-либо в общем чате! Просто сообщите об игроке в службу поддержки.</div></div></div>
+      </div>
+    </div>
+    <div class="rule-content" id="rule-kb">
+      <div class="rules-text">
+        <h3>🌴 Правила Кастомок в КБ (Королевской Битве)</h3>
+        <div class="rules-block"><h4>📚 Правила Игры:</h4>
+          <ul>
+            <li>Вы можете файтится до 70 ремейна.</li>
+            <li>Когда в живых останется 70 или меньше игроков, вы не сможете стрелять, убивать или толкать противников.</li>
+            <li>Вы можете возобновить бой, как только откроется 5-я зона.</li>
+            <li>Во время того как налетит штормовая буря можно перетягиваться.</li>
+            <li>Файтить игроков разрешено только тогда, когда у вас белоу.</li>
+            <li>Если игроки перевозродились, и игроков стало больше 70, то файтиться запрещено.</li>
+          </ul>
+          <span class="punishment">🔒 Наказание: 7 дней мута</span>
+        </div>
+        <div class="rules-block"><span class="forbidden">⛔️ Запрещено:</span>
+          <ul>
+            <li>❌ Играть с забаненными. <br><span class="punishment">🔒 30 дней мута</span></li>
+            <li>❌ Наносить ущерб противнику без файта. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Тиминг / Стримснайпинг / Читерство / Кража лута. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Воровать лут из боксов. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Воровать рыбу при рыбалке. <br><span class="punishment">🔒 7 дней мута</span></li>
+          </ul>
+        </div>
+        <div class="rules-block"><h4>🚨 Дополнительно:</h4>
+          <ul>
+            <li>Хранилища — любой может получить добычу.</li>
+            <li>Босс — любой может получить добычу.</li>
+            <li>Кто встал на флаг первым — того флаг.</li>
+            <li>Ломать билды к хранилищу/сейфу можно.</li>
+          </ul>
+        </div>
+        <div class="rules-block"><h4>🚨 Также:</h4>
+          <ul>
+            <li>Отталкивать подкатом — только без вреда игроку. <br><span class="punishment">🔒 48 часов мута</span></li>
+            <li>Редачить билды можно, но без вреда игроку.</li>
+            <li>Файт в сейфтайме — уходите.</li>
+            <li>Боксить запрещено.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rule-content" id="rule-reload">
+      <div class="rules-text">
+        <h3>🌴 Правила Кастомок в Перезарядке</h3>
+        <div class="rules-block"><h4>📚 Правила Игры:</h4>
+          <ul><li>Вы можете начать бой, как только откроется 7-я зона.</li></ul>
+          <span class="punishment">🔒 Наказание: 7 дней мута</span>
+        </div>
+        <div class="rules-block"><span class="forbidden">⛔️ Запрещено:</span>
+          <ul>
+            <li>❌ Играть с забаненными. <br><span class="punishment">🔒 30 дней мута</span></li>
+            <li>❌ Наносить ущерб противнику без файта. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Тиминг / Стримснайпинг / Читерство. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Воровать лут из боксов. <br><span class="punishment">🔒 7 дней мута</span></li>
+            <li>❌ Воровать рыбу. <br><span class="punishment">🔒 7 дней мута</span></li>
+          </ul>
+        </div>
+        <div class="rules-block"><h4>Аирдропы:</h4>
+          <ul>
+            <li>✅ Можно ломать постройки тех, кто строится к аирдропу, если они получили урон.</li>
+            <li>✅ Если аирдроп застроили — можно ломать.</li>
+          </ul>
+        </div>
+        <div class="note-box"><b>📚 Примечание:</b> Использование глюков и багов запрещено. Жалобы — в канал репорт.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-games">
+    <div class="page-head"><div class="page-title">🎮 Игры</div><p class="page-sub">Нажми «Играть» — откроется Discord-сервер. Там заходишь в канал с матчем и ставишь реакцию 👍 под сообщением Yunite.</p></div>
+    <div class="games-hero">
+      <h2>Регистрация на матч</h2>
+      <p>Кнопка откроет сервер PASSION CUSTOMS в новой вкладке. Там ты зайдёшь в канал с матчем и поставишь реакцию 👍 — бот Yunite пришлёт тебе запрос в друзья в Fortnite.</p>
+      <a href="https://discord.gg/2Dnm6KuC7" target="_blank" rel="noopener noreferrer" class="play-btn">▶ Играть</a>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-hoststream">
+    <div class="page-head"><div class="page-title">📺 Стрим хоста</div><p class="page-sub">Прямая трансляция главного хоста PASSION CUSTOMS.</p></div>
+    <div class="host-stream-grid">
+      <div class="stream-frame"><iframe src="https://player.twitch.tv/?channel=playerfn197&parent=localhost" allowfullscreen></iframe></div>
+      <div class="card stream-info">
+        <div class="si-row"><div class="si-ico">👤</div><div><div class="si-lbl">Стример</div><div class="si-val">PlayerFN</div></div></div>
+        <div class="si-row"><div class="si-ico">🎮</div><div><div class="si-lbl">Игра</div><div class="si-val">Fortnite · Custom</div></div></div>
+        <div class="si-row"><div class="si-ico">🔗</div><div><div class="si-lbl">Twitch</div><div class="si-val"><a href="https://www.twitch.tv/playerfn197" target="_blank" style="color:var(--accent-2)">twitch.tv/playerfn197</a></div></div></div>
+        <a href="https://www.twitch.tv/playerfn197" target="_blank" class="btn-primary" style="width:100%;margin-top:16px;">Открыть на Twitch</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-code">
+    <div class="page-head"><div class="page-title">🎨 CR Code User</div><p class="page-sub">Загрузи скриншот с кодом автора (PASSIONCUSTOMS), чтобы получить роль <b>CR CODE USER</b>.</p></div>
+    <div class="card upload-card">
+      <div class="fld" style="margin-bottom:0">
+        <label>Скриншот с кодом автора</label>
+        <div class="dropzone" id="codeDrop">
+          <div class="dz-icon" id="codeIcon">📤</div>
+          <div class="dz-title" id="codeTitle">Перетащи скрин сюда или нажми</div>
+          <div class="dz-sub" id="codeSub">PNG, JPG · до 10 МБ</div>
+          <img id="codePreview" src="" alt="Preview">
+          <input type="file" id="codeFile" accept="image/*" hidden />
+        </div>
+      </div>
+      <button class="btn-submit" id="codeSubmit">Отправить на проверку</button>
+    </div>
+    <div class="section-title" style="margin-top:32px;">Участники с ролью CR CODE USER</div>
+    <div class="cr-users-list" id="crUsersList"></div>
+  </section>
+
+  <section class="panel" id="panel-prizes">
+    <div class="page-head"><div class="page-title">💸 ПРИЗЫ</div><p class="page-sub">Каждый вечер — призовой фонд.</p></div>
+    <div class="prize-mode">
+      <div class="prize-mode-head"><div class="pm-icon">🎁</div><div><h3>Призы без доп. выигрыша</h3><p>Без введённого кода автора</p></div><span class="pm-tag plain">Базовые</span></div>
+      <div class="prizes-grid">
+        <div class="prize"><div class="p-mode">Solo</div><div class="p-amount">75 <small>₽</small></div><div class="p-per">за 1-е место</div></div>
+        <div class="prize"><div class="p-mode">Duo</div><div class="p-amount">150 <small>₽</small></div><div class="p-per">75 ₽ каждому</div></div>
+        <div class="prize"><div class="p-mode">Squad</div><div class="p-amount">200 <small>₽</small></div><div class="p-per">50 ₽ каждому</div></div>
+      </div>
+    </div>
+    <div class="prize-mode">
+      <div class="prize-mode-head"><div class="pm-icon">💎</div><div><h3>Призы с доп. выигрышем</h3><p>С введённым кодом автора</p></div><span class="pm-tag bonus">Повышенные</span></div>
+      <div class="prizes-grid">
+        <div class="prize"><div class="p-mode">Solo</div><div class="p-amount">150 <small>₽</small></div><div class="p-per">за 1-е место</div></div>
+        <div class="prize"><div class="p-mode">Duo</div><div class="p-amount">200 <small>₽</small></div><div class="p-per">100 ₽ каждому</div></div>
+        <div class="prize"><div class="p-mode">Squad</div><div class="p-amount">400 <small>₽</small></div><div class="p-per">100 ₽ каждому</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-wins">
+    <div class="page-head"><div class="page-title">🥇 Победы</div><p class="page-sub">Кидай скрин победы — админ начислит баланс.</p></div>
+    <div class="card" style="margin-bottom:24px">
+      <div class="dropzone" id="winDrop" style="min-height:180px;padding:20px;">
+        <div class="dz-icon" id="winIcon">🏆</div>
+        <div class="dz-title" id="winTitle">Загрузи скрин победы</div>
+        <div class="dz-sub" id="winSub">PNG, JPG · до 10 МБ</div>
+        <img id="winPreview" src="" alt="Preview">
+        <input type="file" id="winFile" accept="image/*" hidden />
+      </div>
+      <div class="fld" style="margin-top:20px;margin-bottom:0;">
+        <label>Режим матча</label>
+        <select id="winMode"><option>Solo</option><option>Duo</option><option>Squad</option></select>
+      </div>
+      <button class="btn-submit" id="winSubmit">Отправить на проверку</button>
+    </div>
+    <div class="section-title">Мои победы</div>
+    <div class="wins-grid" id="winsGrid"></div>
+  </section>
+
+  <section class="panel" id="panel-playerstreams">
+    <div class="page-head"><div class="page-title">🎥 Стримы игроков</div><p class="page-sub">Те, кто подвязал свой Twitch.</p></div>
+    <div class="twitch-cta">
+      <div class="tc-icon">🟣</div>
+      <div class="tc-text"><h3>Хочешь попасть в список?</h3><p>Подвяжи свой Twitch — и твой стрим появится здесь.</p></div>
+      <button class="btn-primary" id="linkTwitch">Подвязать Twitch</button>
+    </div>
+    <div class="streamers-grid" id="streamersGrid"></div>
+  </section>
+
+  <section class="panel" id="panel-support">
+    <div class="page-head"><div class="page-title">💬 Поддержка</div><p class="page-sub">Задай вопрос или оставь репорт. Переписка ведётся в чате.</p></div>
+    <div class="support-tabs">
+      <button class="support-tab active" data-sup="question">❓ Вопрос</button>
+      <button class="support-tab" data-sup="report">🚨 Репорт на игрока</button>
+      <button class="support-tab" data-sup="balance">💰 Проблема с балансом</button>
+      <button class="support-tab" data-sup="other">📝 Другое</button>
+    </div>
+    <div class="support-grid">
+      <div class="card">
+        <div class="fld"><label>Тема</label><input type="text" id="supSubject" placeholder="Коротко о чём обращение" maxlength="70" /></div>
+        <div class="fld" id="reportField" style="display:none"><label>Ник нарушителя</label><input type="text" id="supReportNick" placeholder="Ник игрока в Fortnite" /></div>
+        <div class="fld"><label>Сообщение</label><textarea id="supText" placeholder="Опиши ситуацию как можно подробнее..." style="min-height:120px;resize:vertical;"></textarea></div>
+        <button class="btn-submit" id="supSubmit">Создать обращение</button>
+      </div>
+      <div>
+        <div class="section-title">Мои обращения</div>
+        <div id="myTicketList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-admin">
+    <div class="admin-hero">
+      <div class="admin-hero-inner">
+        <div class="admin-hero-icon">👑</div>
+        <div><h2>Панель администратора</h2><p>Управление заявками, участниками и обращениями.</p></div>
+      </div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-atab="withdraw">💸 Вывод <span class="at-badge" id="badgeWithdraw">0</span></button>
+      <button class="admin-tab" data-atab="crreq">🎨 CR CODE <span class="at-badge" id="badgeCRReq">0</span></button>
+      <button class="admin-tab" data-atab="wins">🥇 Победы <span class="at-badge" id="badgeWins">0</span></button>
+      <button class="admin-tab" data-atab="users">👥 Участники</button>
+      <button class="admin-tab" data-atab="tickets">💬 Обращения <span class="at-badge" id="badgeTickets">0</span></button>
+    </div>
+
+    <div class="admin-content active" id="admin-withdraw"><div class="req-list" id="withdrawRequestsList"></div></div>
+    <div class="admin-content" id="admin-crreq"><div class="crreq-grid" id="crRequestsList"></div></div>
+    <div class="admin-content" id="admin-wins"><div class="req-list" id="adminWinsList"></div></div>
+
+    <div class="admin-content" id="admin-users">
+      <table class="user-table">
+        <thead><tr><th>Участник</th><th>Роль</th><th>Баланс</th><th>CR CODE</th><th>Действия</th></tr></thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="admin-content" id="admin-tickets"><div class="admin-tickets" id="adminTicketsList"></div></div>
+  </section>
+
+</main>
+
+<!-- МОДАЛКА ПРОФИЛЯ -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeProfileModal()">✕</button>
+    
+    <div class="profile-modal-head">
+      <div class="profile-modal-ava">
+        <span id="pmAvatarLetter">P</span>
+        <span class="admin-star" id="pmAdminStar">👑</span>
+      </div>
+      <div>
+        <div class="profile-modal-name" id="pmName">PlayerFN</div>
+        <div class="profile-modal-role" id="pmRole">Участник</div>
+      </div>
+    </div>
+
+    <div class="profile-modal-tabs">
+      <button class="pm-tab active" data-pm="account">👤 Аккаунт</button>
+      <button class="pm-tab" data-pm="withdraw">💳 Вывод</button>
+    </div>
+
+    <div class="pm-content active" id="pm-account">
+      <div class="account-row">
+        <div class="ar-icon">👤</div>
+        <div class="ar-info"><div class="ar-label">Ник</div><div class="ar-value" id="pmAccNick">PlayerFN</div></div>
+      </div>
+      <div class="account-row">
+        <div class="ar-icon">📧</div>
+        <div class="ar-info"><div class="ar-label">Почта</div><div class="ar-value" id="pmAccEmail">playerfn@passion.com</div></div>
+      </div>
+      <div class="account-row">
+        <div class="ar-icon">🔑</div>
+        <div class="ar-info"><div class="ar-label">Пароль</div><div class="ar-value password" id="pmAccPass">••••••••</div></div>
+        <button class="ar-btn" id="pmTogglePass">👁 Показать</button>
+      </div>
+      <div class="account-row">
+        <div class="ar-icon">💰</div>
+        <div class="ar-info"><div class="ar-label">Баланс</div><div class="ar-value balance" id="pmAccBalance">1 500 ₽</div></div>
+      </div>
+    </div>
+
+    <div class="pm-content" id="pm-withdraw">
+      <div class="withdraw-balance-box">
+        <div class="wb-label">Доступно для вывода</div>
+        <div class="wb-value" id="pmWdBalance">1 500 ₽</div>
+        <div class="wb-note">Минимальная сумма — 750 ₽</div>
+      </div>
+
+      <div class="fld" style="margin-bottom:12px;"><label>Способ вывода</label></div>
+      <div class="method-select">
+        <button class="method-btn active" data-method="card"><span class="m-ico">💳</span><span>На карту</span></button>
+        <button class="method-btn" data-method="sbp"><span class="m-ico">🏦</span><span>По СБП</span></button>
+      </div>
+
+      <div class="fld" id="pmCardField">
+        <label>Номер карты</label>
+        <input type="text" id="pmCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" />
+      </div>
+      <div class="fld" id="pmSbpField" style="display:none;">
+        <label>Номер телефона (СБП)</label>
+        <input type="text" id="pmSbpPhone" placeholder="+7 (999) 999-99-99" maxlength="18" />
+      </div>
+      <div class="fld">
+        <label>Сумма (₽)</label>
+        <input type="number" id="pmWithdrawAmount" placeholder="750" min="750" />
+      </div>
+
+      <button class="btn-submit" id="pmWithdrawBtn" style="margin-top:0;">Отправить заявку на вывод</button>
+
+      <div class="my-withdrawals">
+        <h4>Мои заявки</h4>
+        <div id="myWithdrawalsList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- МОДАЛКА УЧАСТНИКА (АДМИН) -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal admin-user-modal" style="padding:28px;">
+    <button class="modal-close" onclick="closeUserModal()">✕</button>
+    <h3>Профиль участника</h3>
+    <p class="modal-sub">Информация и управление балансом</p>
+    <div class="modal-profile" id="modalProfileCard"></div>
+    <div class="modal-stats" id="modalStats"></div>
+    <div class="fld" style="margin-top:20px;">
+      <label>Сумма (₽)</label>
+      <input type="number" id="balanceAmount" placeholder="500" min="1" />
+    </div>
+    <div class="modal-balance-actions">
+      <button class="btn-add-balance" onclick="adminAdjustBalance('add')">+ Начислить</button>
+      <button class="btn-sub-balance" onclick="adminAdjustBalance('sub')">− Списать</button>
+    </div>
+  </div>
+</div>
+
+<div class="photo-modal" id="photoModal" onclick="this.classList.remove('show')">
+  <img id="photoModalImg" src="" alt="">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
